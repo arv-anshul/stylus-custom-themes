@@ -1,0 +1,158 @@
+/* ==UserStyle==
+@name          Font Changer - For all website
+@namespace      arv-anshul
+@version        1.4.2
+@description    A new userstyle to change font for all website.
+@author         arv-anshul
+
+/* VARIABLES - STARTS *\/
+@advanced dropdown font-family "Font Style" {
+	1 "Baloo 2" <<<EOT 'Baloo 2' EOT;
+	default "# Defualt #" <<<EOT unset EOT;
+	custom "# Custom #" <<<EOT /*[[custom-font]]*\/ EOT;
+	5 "PT Sans" <<<EOT 'PT Sans' EOT;
+	6 "Poppins" <<<EOT 'Poppins' EOT;
+	7 "Ubuntu" <<<EOT 'Ubuntu' EOT;
+	8 "Merriweather Sans" <<<EOT 'Merriweather Sans' EOT;
+	9 "Trebuchet MS" <<<EOT 'Trebuchet MS' EOT;
+}
+
+@advanced text custom-font "Custom Font [If Enabled]" "Katari"
+
+@advanced range spacing "Letter Spacing" [-0.2,-2,2, 0.2,'px']
+
+@advanced text adjusted-font-size "Relative font size (defualt: unset)" "unset"
+
+@advanced dropdown stylus-font "Font Style for STYLUS" {
+	PT "PT Mono*" <<<EOT 'PT Mono' EOT;
+	0 "Courier New" <<<EOT 'Courier New' EOT;
+	2 "JetBrains Mono" <<<EOT 'JetBrains Mono' EOT;
+	4 "Operator Mono Lig" <<<EOT 'Operator Mono Lig' EOT;
+	default "# Defualt #" <<<EOT Menlo EOT;
+	custom "# Custom #" <<<EOT /*[[code-font]]*\/ EOT;
+}
+
+@advanced text code-font "Custom Font [If Enabled]" "JetBrains Mono, Monaco"
+
+==/UserStyle== */
+@-moz-document url-prefix("https://")
+{
+  /* All Websites */
+  @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,400;0,800;1,400;1,800&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,300;1,600&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+  div,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  a {
+    font-family:  /*[[font-family]]*/ , VideoJS, "seti", icomoon, ph-icons,
+      icon-font, FontAwesome, redesignFont2020, "Material Icons Extended",
+      "ktplayer", "Font Awesome 5 Pro", codicon, "AzureDevOpsMDL2Assets",
+      "Material Icons", "Glyphicons Halflings", "Font Awesome 5 Free",
+      "Font Awesome 5 Brands;" !important;
+    font-size-adjust: /*[[adjusted-font-size]]*/ ;
+    letter-spacing: /*[[spacing]]*/ ;
+  }
+
+  /* pw website */
+  app-khazana-card,
+  section.my-4.khazana-card-main,
+  div.vjs-iframe-blocker,
+  .iibOUQ {
+    display: none;
+  }
+
+  /* quora.com */
+  div.q-box[width="314"] {
+    display: none;
+  }
+
+  #mainContent {
+    width: 80% !important;
+    margin: auto;
+  }
+
+  /* stackoverflow */
+  div.ff-sans.z-nav-fixed {
+    display: none;
+  }
+
+  /* Campusx */
+  #cookiePopupForm {
+    display: none;
+  }
+}
+
+@-moz-document url-prefix("moz-extension://"),
+url-prefix('https://white-photographer')
+{
+  /* Stylus Extension */
+  * {
+    letter-spacing: -0.3px;
+    font-size-adjust: 0.6;
+  }
+
+  div,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  a {
+    font-family: /*[[stylus-font]]*/ !important;
+  }
+
+  .cm-s-default .cm-comment {
+    font-style: italic;
+    font-weight: bold;
+    font-size-adjust: 0.8;
+    color: red;
+  }
+
+  #cm-complete-0-0,
+  .CodeMirror-hint,
+  pre span,
+  .CodeMirror-linenumber {
+    font-size-adjust: 0.75;
+  }
+}
+
+@-moz-document url-prefix("https://github.com"),
+url-prefix("https://raw.githubusercontent.com/")
+{
+  /* GitHub */
+  div,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  a,
+  span {
+    font-family: "JetBrains Mono", "Operator Mono Lig" !important;
+    letter-spacing: -0.55px;
+  }
+
+  td,
+  th,
+  td span,
+  code,
+  pre span,
+  pre {
+    font-family: "Operator Mono Lig" !important;
+    font-size-adjust: 0.65;
+  }
+}

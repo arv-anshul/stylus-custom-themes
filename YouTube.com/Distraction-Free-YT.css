@@ -1,0 +1,395 @@
+/* ==UserStyle==
+@name           Distraction Free Youtube by arv
+@namespace      github.com/arv-anshul/
+@version        2.5.2
+@description    New Ultimate Distraction Free, Enhanced UI/UX with font changing configuration theme for Youtube.com
+@author         arv-anshul
+
+Extensions to use:
+	~> Enhancer for YouTube. >> Enable all ON Theater Mode.
+	~> Sponsor Blocker.
+	~> Channel Blocker.
+	~> Video Speed Control.
+
+Inspiration -> Stylus CSS Theme:
+	~> Youtube My Theme + Stylus
+	~> the unbeveling
+	~> Youtube Dark [somthing like that for sidebar]
+
+@advanced dropdown sans-font "DataFrame Table Font" {
+	merriweather "Merriweather Sans" <<<EOT 'Merriweather Sans' EOT;
+	default "# Defualt #" <<<EOT unset EOT;
+	custom "# Custom #" <<<EOT /*[[custom-sans-font]]*\/ EOT;
+	yt-sans "Youtube Sans" <<<EOT 'Youtube Sans' EOT;
+	poppins "Poppins" <<<EOT 'Poppins' EOT;
+	baloo "Baloo 2" <<<EOT 'Baloo 2' EOT;
+	katari "Katari" <<<EOT 'Katari' EOT;
+	gotu "Gotu" <<<EOT 'Gotu' EOT;
+	arima "Arima Koshi" <<<EOT 'Arima Koshi' EOT;
+}
+
+@advanced text custom-sans-font "Custom DataFrame Font [If Enabled]" "Kannada MN"
+
+@advanced range spacing "Font Spacing" [0, -1.4, 2.0, 0.2, "px"]
+
+@advanced dropdown mini-player "YT Mini-Player Size" {
+	3 "Large*" <<<EOT scale(1.3) translate3d(0, var(--ytd-miniplayer-playlist-height), 0) translate(-10%, -12%) EOT;
+	1 "Normal" <<<EOT translate3d(0,var(--ytd-miniplayer-playlist-height),0) EOT;
+	2 "Medium" <<<EOT scale(1.18) translate3d(0,var(--ytd-miniplayer-playlist-height),0) translate(-7%, -8%) EOT;
+}
+
+@advanced dropdown playlist-pos "Chat/Playlist Position" {
+	1 "Bottom*" <<<EOT column EOT;
+	2 "Top" <<<EOT column-reverse EOT;
+	3 "Side/Side" <<<EOT row EOT;
+}
+
+==/UserStyle== */
+@-moz-document domain("youtube.com") {
+  /* 	YouTube Domain Page */
+  @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,400;0,800;1,400;1,800&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,300;1,600&display=swap");
+
+  :root {
+    --yt-img-border-radius: 12px;
+    --yt-regular-border-radius: 12px;
+    --yt-brand-medium-red: #ef4141;
+    --transition-all: all 0.25s ease-in-out;
+  }
+
+  * {
+    font-family: /*[[sans-font]]*/ !important;
+    letter-spacing: /*[[spacing]]*/ !important;
+  }
+
+  /* Scrollbar */
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 	continuous page scroll disabled */
+  .ytd-rich-section-renderer[is-shorts],
+  ytd-continuation-item-renderer.ytd-rich-grid-renderer,
+  ytd-continuation-item-renderer.ytd-section-list-renderer {
+    display: none;
+  }
+
+  div #contents .ytd-rich-grid-renderer:nth-child(4),
+  div #contents .ytd-rich-grid-renderer:nth-child(5),
+  div #contents .ytd-rich-grid-renderer:nth-child(6),
+  .ytd-statement-banner-renderer {
+    display: none !important;
+  }
+
+  /* 	miniplayer */
+  ytd-miniplayer {
+    transform: /*[[mini-player]]*/ !important;
+  }
+
+  /* 	home video title */
+  #video-title.ytd-rich-grid-media {
+    font-size-adjust: 0.48;
+    font-weight: normal;
+  }
+
+  yt-formatted-string[ellipsis-truncate-styling] a.yt-formatted-string,
+  tp-yt-paper-item[aria-selected="true"] .title.ytd-guide-entry-renderer {
+    font-weight: bold;
+  }
+
+  /* 	sidebar-nav */
+  ytd-guide-entry-renderer[active] > #endpoint tp-yt-paper-item yt-icon,
+  ytd-guide-entry-renderer[active]
+    > #endpoint
+    tp-yt-paper-item
+    yt-formatted-string {
+    fill: var(--yt-brand-medium-red);
+    color: var(--yt-brand-medium-red);
+    text-transform: uppercase;
+  }
+
+  ytd-guide-entry-renderer[active] > #endpoint tp-yt-paper-item yt-img-shadow {
+    border: 1.5px solid #0002;
+    box-shadow: 0 0 0 1.5px var(--yt-brand-medium-red), -1px 2px 20px #000a;
+    transform: scale(2);
+    z-index: 100;
+  }
+
+  #endpoint[title="Shorts"],
+  #sections.ytd-guide-renderer > .ytd-guide-renderer:nth-child(3),
+  #sections.ytd-guide-renderer > .ytd-guide-renderer:nth-child(4),
+  #sections.ytd-guide-renderer
+    > .ytd-guide-renderer:nth-child(5)
+    > #items
+    ytd-guide-entry-renderer:nth-child(2),
+  #sections.ytd-guide-renderer
+    > .ytd-guide-renderer:nth-child(5)
+    > #items
+    ytd-guide-entry-renderer:nth-child(3),
+  #sections.ytd-guide-renderer
+    > .ytd-guide-renderer:nth-child(5)
+    > #items
+    ytd-guide-entry-renderer:nth-child(4),
+  #footer .ytd-guide-renderer,
+  ytd-feed-filter-chip-bar-renderer {
+    display: none !important;
+  }
+
+  #contents.ytd-rich-grid-renderer {
+    margin-top: 6px;
+  }
+
+  /* 	video page subscribe button */
+  .cbox.yt-spec-button-shape-next--button-text-content {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  /* 	thumbnail hover effect */
+  #dismissible.ytd-rich-grid-media:hover,
+  #dismissible.ytd-rich-grid-video-renderer:hover,
+  #dismissible.ytd-rich-grid-slim-media:hover,
+  #dismissible.style-scope.ytd-grid-video-renderer:hover {
+    background-color: var(--yt-spec-light-blue-alpha-30);
+    box-shadow: 0 0 0 5px var(--yt-spec-light-blue-alpha-30);
+    border-radius: var(--yt-img-border-radius);
+    z-index: 10;
+  }
+
+  /* 	Youtube My Theme+ - Stylus */
+  /* 	thumbnail */
+  #player-container.ytd-video-preview,
+  .html5-video-player .video-click-tracking,
+  .html5-video-player.ytp-autonav-endscreen-cancelled-state.ended-mode,
+  .html5-video-player:not(.ytp-transparent),
+  .html5-video-player.ytp-fullscreen,
+  .html5-video-player.unstarted-mode,
+  .html5-video-player .video-stream {
+    border-radius: 12px;
+  }
+
+  /* 	thumbnail progressbar */
+  #progress.ytd-thumbnail-overlay-resume-playback-renderer {
+    background-color: #f00;
+  }
+
+  #progress.ytd-thumbnail-overlay-resume-playback-renderer[style*="100%"] {
+    background: #fff0;
+  }
+
+  ytd-thumbnail-overlay-resume-playback-renderer {
+    background-color: #1a1a1a00;
+  }
+
+  #progress.ytd-thumbnail-overlay-resume-playback-renderer[style*="100%"]::before {
+    content: "👓 Watched";
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    position: absolute;
+    height: 450% !important;
+    width: 100%;
+    top: -14px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 9px;
+    font-size: 140%;
+    background: linear-gradient(
+      -90deg,
+      #0000 10%,
+      var(--yt-brand-medium-red) 100%
+    );
+    transition: all 0.9s ease-in-out 0.5s;
+  }
+
+  #thumbnail:hover
+    #overlays
+    #progress.ytd-thumbnail-overlay-resume-playback-renderer[style*="100%"]::before {
+    opacity: 0;
+    content: "👓 Watch Again?";
+  }
+}
+
+@-moz-document url-prefix('https://www.youtube.com/feed/subscriptions')
+{
+  /* 	YouTube Subscription Page */
+  ytd-two-column-browse-results-renderer.grid:not(.grid-disabled) {
+    max-width: none;
+    width: 95% !important;
+  }
+
+  #items.ytd-grid-renderer {
+    place-content: space-evenly;
+  }
+
+  ytd-grid-video-renderer
+    #video-title.yt-simple-endpoint.ytd-grid-video-renderer {
+    font-weight: normal;
+    font-size-adjust: 0.45;
+  }
+
+  /* 	continous page scroll disable */
+  div #contents .ytd-section-list-renderer:nth-child(3),
+  div #contents .ytd-section-list-renderer:nth-child(4) {
+    display: none;
+  }
+}
+
+@-moz-document url-prefix("https://www.youtube.com/watch")
+{
+  /* 	YouTube Video Page */
+  /* 	masthead header */
+  #masthead-container.ytd-app {
+    transform: translate(0%, -50%);
+    opacity: 0;
+    transition: var(--transition-all);
+  }
+
+  #masthead-container.ytd-app:hover {
+    transform: translate(0);
+    opacity: 1;
+  }
+
+  #page-manager {
+    margin-top: 0px !important;
+  }
+
+  yt-formatted-string.ytd-video-primary-info-renderer,
+  .title.ytd-video-primary-info-renderer,
+  yt-formatted-string[has-link-only_]:not([force-default-style])
+    a.yt-simple-endpoint.yt-formatted-string,
+  #owner-sub-count.ytd-video-owner-renderer,
+  #info,
+  h1.ytd-watch-metadata,
+  #super-title {
+    font-weight: bold;
+    font-size-adjust: 0.65;
+  }
+
+  /* 	video chapters */
+  .ytp-time-display,
+  .ytp-chapter-container button {
+    font-size-adjust: 0.52;
+    font-weight: bold;
+  }
+
+  h1.ytd-watch-metadata,
+  h1.title {
+    padding: 6px 0;
+  }
+
+  #channel-name #text-container #text a {
+    padding-top: 5px;
+  }
+
+  #columns {
+    align-items: center;
+  }
+
+  /* 	secondary - primary */
+  #secondary {
+    width: 65% !important;
+    margin-top: 8px !important;
+    padding: 0 !important;
+  }
+
+  #primary {
+    width: 80% !important;
+  }
+
+  .ytp-fullerscreen-edu-chevron,
+  #related {
+    display: none;
+  }
+
+  #columns.ytd-watch-flexy {
+    flex-direction: /*[[playlist-pos]]*/ ;
+  }
+
+  /* 	description */
+  #info {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--yt-spec-call-to-action);
+  }
+
+  #info span {
+    font-weight: bold;
+  }
+
+  ytd-expander.ytd-video-secondary-info-renderer {
+    margin: 0px;
+  }
+
+  #description {
+    border: 1px solid var(--yt-spec-10-percent-layer);
+  }
+
+  #description-inner {
+    max-width: none !important;
+    text-align: center;
+    font-size-adjust: 0.56;
+    overflow: scroll;
+    max-height: var(--ytd-watch-flexy-panel-max-height);
+  }
+
+  #lockup-container.ytd-structured-description-playlist-lockup-renderer {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  #lockup-container #description {
+    border: initial;
+    background: transparent;
+    min-height: auto;
+    height: 10px;
+    margin: 0;
+  }
+
+  ytd-merch-shelf-renderer {
+    border-bottom: none !important;
+  }
+
+  /* 	comment section */
+  ytd-continuation-item-renderer {
+    display: initial;
+  }
+
+  #comments {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: var(--yt-regular-border-radius);
+    border: 1px solid var(--yt-spec-10-percent-layer);
+    background: var(--yt-spec-badge-chip-background);
+  }
+
+  #comments #sections {
+    overflow: scroll;
+    height: 83px;
+    transition: var(--transition-all) 1s;
+  }
+
+  #comments #sections:hover {
+    height: var(--ytd-watch-flexy-panel-max-height);
+  }
+
+  ytd-comments-header-renderer,
+  #title.ytd-comments-header-renderer {
+    margin-bottom: 10px;
+    margin-top: 0px;
+  }
+}
+
+@-moz-document url-prefix('https://www.youtube.com/playlist'),
+url-prefix("https://www.youtube.com/results"),
+url-prefix("https://www.youtube.com/@")
+{
+  /* 	YT EXTRAS */
+  ytd-continuation-item-renderer.ytd-rich-grid-renderer {
+    display: initial;
+  }
+}

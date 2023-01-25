@@ -1,0 +1,31 @@
+/* ==UserStyle==
+@name           Cleaned You.com
+@namespace      anshul
+@version        1.4.5
+@description    Hide unwanted stuff from `You.com` and make it more productive to use. A whole new clean and fresh experience with You.com search engine. Search without clutter.
+@author         arv-anshul
+==/UserStyle== */
+@-moz-document domain("you.com") {
+  /* 	 Cleaned You.com  */
+  div[style="left: 0px;"] > div[data-testid="layout-id"] > div,
+  div[data-testid="right-line-container"],
+  div[data-testid="header-preference-container"],
+  section main section,
+  svg[data-testId="LandingPage-DownArrow"] path,
+  div[data-app-ydcappname="search_on"] #shortcuts-app,
+  button[data-testid="log-in-button"],
+  button[data-testid="sign-up-button"],
+  li[data-testid="slack-community"],
+  a[data-eventtiletitle="Add to Chrome Button"],
+  div[data-testid="LandingPage-AppButtons"],
+  div[data-testid="extension-button"],
+  div[data-eventapptitle="Code Complete"] {
+    display: none;
+  }
+
+  div[data-testid="app-mainline"] {
+    max-width: none;
+    margin-bottom: 20px;
+    margin-left: 60px;
+  }
+}
