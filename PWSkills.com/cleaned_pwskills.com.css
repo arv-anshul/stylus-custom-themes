@@ -1,0 +1,209 @@
+/* ==UserStyle==
+@name           Cleaned pwskills.com
+@namespace      github.com/arv-anshul/
+@version        2.1
+@description    You have to customize on your class selector to work on your course.
+@author         arv-anshul
+
+To work this on your course :
+>> You have to replace the class selector/name on your website.
+=========================================================================================
+
+@advanced range radius "Border Radius" [16, 0, 30, 2,'px']
+
+@advanced text number "No. of Courses to Hide" 26
+
+@advanced dropdown hideSection "Hide Sections" {
+1 "Hide *" <<<EOT 
+	.LessonList_lesson-list__160f2 div:nth-child(3),
+	.LessonList_lesson-list__160f2 div:nth-child(4),
+	.LessonList_lesson-list__160f2 div:nth-child(5),
+	.LessonList_lesson-list__160f2 div:nth-child(6),
+	.LessonList_lesson-list__160f2 div:nth-child(7),
+	.LessonList_lesson-list__160f2 > div:nth-child(-n + /*[[number]]*\/) {
+		display: none;
+	} EOT;
+
+2 "Display" <<<EOT EOT;
+}
+
+==/UserStyle== */
+@-moz-document domain("pwskills.com") {
+  /* Course Video Page */
+  :root {
+    --transition-all: all 0.3s ease-in-out;
+    --dark-1: #3a3a3a;
+    --dark-2: #222;
+    --dark-3: var(--toastify-color-dark);
+    --light-1: #f3d4cf;
+    --light-1-hover: #f3d4cfef;
+    --border-radius-single: /*[[radius]]*/ ;
+    --light-color: var(--light-1);
+  }
+
+  * {
+    -webkit-touch-callout: initial;
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+    line-height: 1.2;
+    transition: var(--transition-all);
+  }
+
+  #reve-chat-container-div,
+  .LessonList_lesson-list__160f2 .LessonList_social-fixed__3UxMg,
+  .VideoData_header-tabs__3fEqf ul li:first-of-type,
+  .VideoData_header-tabs__3fEqf ul li:nth-last-of-type(1),
+  .VideoData_header-tabs__3fEqf ul li:nth-last-of-type(2),
+  .VideoData_video-data__1UhvP .VideoData_video-overview__1_HUL {
+    display: none;
+  }
+
+  /*[[hideSection]]*/
+  /* header */
+  .Lesson_video-detail__33oRx .Lesson_video-info__3W2cf .Lesson_header__2dt5H {
+    background-color: var(--dark-2);
+  }
+
+  .Lesson_now-playing__1LQKU span,
+  .Lesson_header-right__3AJRh,
+  .Lesson_video-detail__33oRx
+    .Lesson_video-info__3W2cf
+    .Lesson_header-left__1uNMX
+    .Lesson_now-playing__1LQKU
+    span:last-child {
+    color: var(--light-1);
+  }
+
+  /* Video */
+  .Lesson_video-detail__33oRx .Lesson_video-info__3W2cf {
+    overflow-y: visible;
+    height: initial;
+  }
+
+  /* Resources - Section */
+  .VideoData_video-data__1UhvP .VideoData_header-tabs__3fEqf,
+  .VideoData_video-data__1UhvP .VideoData_header-tabs__3fEqf ul li {
+    padding: 1px;
+  }
+
+  .VideoData_video-data__1UhvP .VideoData_video-resources__1FDKb {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: var(--dark-3);
+  }
+
+  .VideoData_video-data__1UhvP
+    .VideoData_video-resources__1FDKb
+    span:first-child {
+    display: none;
+  }
+
+  .VideoData_video-data__1UhvP
+    .VideoData_video-resources__1FDKb
+    .VideoData_resources-grid__1Vr0_ {
+    margin: 0;
+    grid-template-columns: auto;
+  }
+
+  .VideoData_video-data__1UhvP
+    .VideoData_video-resources__1FDKb
+    .VideoData_resources-item__1syQT {
+    background-color: var(--light-1);
+    border-radius: calc(20px - var(--border-radius-single));
+  }
+
+  .Lesson_video-detail__33oRx > div:first-child {
+    flex-direction: column;
+    align-items: center;
+    background: var(--dark-3);
+  }
+
+  /* Notes - Section */
+  .Notes_notes__H-AV1 {
+    background-color: var(--dark-3);
+    padding: 30px 300px 10px;
+  }
+
+  .Notes_notes__H-AV1 textarea {
+    background-color: var(--light-1);
+    color: var(--dark-3);
+  }
+
+  .Notes_notes__H-AV1 .Notes_note-box__1xHI1 button {
+    margin-top: 10px;
+  }
+
+  .Notes_notes__H-AV1 .Notes_note-box__1xHI1 > div {
+    justify-content: center;
+  }
+
+  .Notes_notes__H-AV1 .Notes_note-list-header__FY3D2 {
+    display: none;
+  }
+
+  .Notes_notes__H-AV1
+    .Notes_note-content-header__if8GK
+    .Notes_note-title__2yhdC,
+  .Notes_notes__H-AV1 .Notes_note-list-header__FY3D2 > span,
+  .Notes_notes__H-AV1 .Notes_note-list-header__FY3D2 > div span {
+    color: var(--light-1);
+  }
+
+  .fa-trash-alt::before {
+    color: red;
+  }
+
+  /* Sidebar -NOW- Lesson List */
+  .LessonList_lesson-list__160f2 {
+    min-width: 800px;
+    width: 600px;
+    overflow-y: visible;
+  }
+
+  .LessonList_lesson-list__160f2 .LessonList_section-header__1cZ6a {
+    background-color: var(--dark-1);
+    border: 1px solid var(--dark-2);
+    border-radius: var(--border-radius-single);
+    padding: 12px 40px;
+  }
+
+  .LessonList_lesson-list__160f2 .LessonList_section-header__1cZ6a div span {
+    color: var(--light-1) !important;
+  }
+
+  .LessonList_lesson-list__160f2 .LessonList_section-header__1cZ6a:hover {
+    background-color: var(--dark-2);
+  }
+
+  .LessonList_lesson-list__160f2
+    .LessonList_section-list__30ZP5
+    .LessonList_section-list-resource__3zigM {
+    padding: 12px 40px;
+    background-color: var(--light-1);
+  }
+
+  .LessonList_lesson-list__160f2
+    .LessonList_section-list__30ZP5
+    .LessonList_section-list-resource__3zigM:hover {
+    cursor: pointer;
+    background-color: var(--light-1-hover);
+  }
+
+  .LessonList_section-list__30ZP5 > ul li:first-child div {
+    border-top-left-radius: var(--border-radius-single);
+    border-top-right-radius: var(--border-radius-single);
+  }
+
+  .LessonList_section-list__30ZP5 > ul li:last-child div {
+    border-bottom-left-radius: var(--border-radius-single);
+    border-bottom-right-radius: var(--border-radius-single);
+  }
+
+  .LessonList_lesson-list__160f2 .LessonList_section-list__30ZP5 li:hover {
+    background: transparent;
+  }
+}
